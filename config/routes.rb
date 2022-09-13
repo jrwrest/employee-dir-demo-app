@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :employees
   # get 'employees/:page', action: :index, on: :collection
+  
 end
