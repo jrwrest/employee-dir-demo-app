@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee Directory</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= render 'shared/navbar' %>
+    <main class="">
+      <% if notice %>
+        <div class="w-5/6 sm:w-2/3 md:w-1/2 my-1 py-1 px-1 mx-auto" id="notice">
+          <p class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md relative" role="alert">
+            <%= notice %></p>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="w-5/6 sm:w-2/3 md:w-1/2 my-1 py-1 px-1 mx-auto" id="alert">
+          <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative relative" role="alert">
+            <%= alert %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+  <%= debug(params) if Rails.env.development? %>
+</html>

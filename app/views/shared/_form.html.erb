@@ -1,0 +1,38 @@
+  <%= form_with model: employee do |f| %>
+  <% @employee.errors.full_messages.each do |message| %>
+    <div><%= message %> </div>
+  <% end %>
+  <div class="field">
+    <% if resource.avatar.attched? %>
+      <%= image_tag(resource.avatar) %>
+    <% else %>
+      <%= image_tag("https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80") %>
+    <% end %>
+  </div>
+  <div class="-space-y-px rounded-md shadow-sm">
+    <div>
+      <%= f.email_field :email, placeholder: "Email",
+              class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+            %>
+    </div>
+    <div>
+      <%= f.text_field :name, placeholder: "Name",
+              class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+            %>
+    </div>
+    <div>
+      <%= f.text_field :bio, placeholder: "Bio",
+              class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+            %>
+    </div>
+    <div>
+      <%= f.file_field :avatar,accept: "image/jpeg,image/gif,image/png",
+              class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+       %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit "Submit", class:
+    "group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+     %>
+  <% end %>
