@@ -11,7 +11,7 @@
       <p class="text-sm text-gray-500 text-center">   <%= @employee.email %></p>
       <p class="text-sm text-gray-500 text-center">   <%= @employee.bio %></p>
       <div class="">
-        <%= link_to edit_employee_path, class:"float-right m-px inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-1 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" do %>
+        <%= link_to edit_user_path, class:"float-right m-px inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-1 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" do %>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3 -ml-1 mr-3 h-5 w-5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
           Edit
         <% end %>

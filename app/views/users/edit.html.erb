@@ -2,14 +2,14 @@
   <div class="w-full max-w-md space-y-8">
     <div>
       <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Edit Profile</h2>
+      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Edit Employee <%= @user.name %></h2>
       <%# <p class="mt-2 text-center text-sm text-gray-600">
         Or
         <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">start your 14-day free trial</a>
       </p> %>
     </div>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_with model: @user  do |f| %>
+      <%# <%= render "devise/shared/error_messages", @employee: resource %>
       <!-- Avatar form -->
       <label class="flex justify-center items-center left-50 pb-6">
         <div class="relative flex items-center justify-center rounded-full w-48 h-48 bg-black bg-opacity-50 hover:bg-red text-white cursor-pointer">
@@ -29,26 +29,15 @@
               class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
             %>
           </div>
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
-          <div class="field">
-            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-            <%= f.password_field :password, autocomplete: "new-password" , placeholder: "New Password",
-                            class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
-      %>
-            <% if @minimum_password_length %>
-              <br />
-              <em><%= @minimum_password_length %> characters minimum</em>
-            <% end %>
+          <div>
+            <%= f.text_field :name, placeholder: "Name",
+              class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+            %>
           </div>
-          <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password Confimation",
-                            class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
-      %>
-          </div>
-          <div class="field">
+          <div>
+            <%= f.text_field :bio, placeholder: "Bio",
+              class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+            %>
           </div>
           <div class="actions">
             <%= f.submit "Update", class:
@@ -56,9 +45,4 @@
      %>
           </div>
         <% end %>
-        <div>
-          <h3>Cancel my account</h3>
-          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-          <%= link_to "Back", :back %></div>
       </div>
-    </div>
