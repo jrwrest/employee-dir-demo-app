@@ -4,6 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
-  paginates_per 5
+
+  def self.search(search)
+    if search
+      where('name or email LIKE ?', "%#{search}%")
+    else
+      where(nil)
+    end
+  end
 
 end

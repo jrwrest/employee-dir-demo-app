@@ -3,7 +3,10 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
   
     def index
-      @users = User.order(:name).page params[:page]
+      # @users = User.order(:name).page params[:page]
+
+      # @q = Person.ransack(params[:q])
+      # @users = @q.result(distinct: true)
     end
   
     
@@ -49,6 +52,8 @@ class UsersController < ApplicationController
   
       redirect_to root_path, status: :see_other if @user.destroy
     end
+
+
   
     private 
 
