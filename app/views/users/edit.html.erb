@@ -13,10 +13,10 @@
       <!-- Avatar form -->
       <label class="flex justify-center items-center left-50 pb-6">
         <div class="relative flex items-center justify-center rounded-full w-48 h-48 bg-black bg-opacity-50 hover:bg-red text-white cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8  text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <svg xmlns="http://www.w3.org/2000/svg" id="cam" class="h-8 w-8  text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-            <%= image_tag current_user.avatar, class: "absolute inset-0 text-white opacity-5 rounded-full w-48 h-48" %>
+            <%= image_tag @user.avatar, id: "avatar_img", class: "absolute inset-0 text-white opacity-5 rounded-full w-48 h-48" if @user.avatar.attached? %>
           </svg>
         </div>
         <span style="display:none;">
@@ -30,19 +30,25 @@
             %>
           </div>
           <div>
+            <%= f.label :name %><br />
             <%= f.text_field :name, placeholder: "Name",
               class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
             %>
           </div>
           <div>
+            <%= f.label :bio %><br />
             <%= f.text_field :bio, placeholder: "Bio",
               class: 'relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
             %>
           </div>
-          <div class="actions">
+          <div>
+            <%= f.check_box :admin, class: "", id: "customSwitch1"   %>
+            <%= f.label :admin %><br />
+          </div>
+          <div class="actions ">
             <%= f.submit "Update", class:
-    "group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-     %>
+                 " group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+             %>
           </div>
         <% end %>
       </div>

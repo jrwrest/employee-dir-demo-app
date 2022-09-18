@@ -1,7 +1,8 @@
 <div class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" >
   <%= form_tag root_path, :method => 'get' do %>
     <p>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Name or Email", class: "indent-12 pl-10  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Name or Email",id: "search" , class: " text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" do %>
+        <%# use css to indent for search icon indent-12 pl-10 %>
       <% end %>
       <%= submit_tag "", :name => nil %>
     </p>

@@ -3,73 +3,83 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
   
     def index
-      # @users = User.order(:name).page params[:page]
-
-      # @q = Person.ransack(params[:q])
-      # @users = @q.result(distinct: true)
+ 
     end
   
     
   
-  #   def show
-  #   end
+    def show
+      @employee = User.find(params[:id])
+    end
   
     def new
+      admin_user
+      
       @user = User.new
     end
   
     def create
       @user = User.new(user_params)
-      if params[:user][:password].blank?
      
-      end
-      
-      if @user.save(validate: false)
-        redirect_to root_path
+    
+      @user.skip_password_validation = true if current_user.admin?
+      if @user.save
+        respond_to do |format|
+           format.html { redirect_to root_path, notice: "Saved..."} 
+        end
       else
         render :new, status: :unprocessable_entity
       end
     end
   
     def edit
+      admin_user
     end
   
     def update
     
       @user = User.find(params[:id])
       
-      skip_password
+      
+      @user.skip_password_validation = true if current_user.admin?
       
       if @user.update(user_params)
-        redirect_to root_path
+        
+        respond_to do |format|
+          format.html { redirect_to root_path, notice: "Updated..."} 
+       end
       else 
         render :edit, status: :unprocessable_entity
       end
     end
   
     def destroy
-      
-  
-      redirect_to root_path, status: :see_other if @user.destroy
+      admin_user
+      if @user.destroy
+        respond_to do |format|
+           format.html { redirect_to root_path, notice: "User Deleted..."} 
+        end
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
 
 
   
     private 
 
-    def skip_password
-        if params[:user][:password].blank?
-            params[:user].delete(:password)
-            params[:user].delete(:password_confirmation)
-          end
-    end
+ 
   
     def user_params
-      params.require(:user).permit(:name, :email, :bio, :avatar)
+      params.require(:user).permit(:name, :email, :bio, :avatar, :admin)
     end
   
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def admin_user
+      redirect_to(root_url, status: :see_other) unless current_user.admin?
     end
   
 
