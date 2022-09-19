@@ -18,6 +18,7 @@ class ActiveSupport::TestCase
  
   Capybara.server_port = 3001
   Capybara.app_host = 'http://localhost:3001'
+  
 
   def create_update_user(heading = "Sign Up", email = "email@email.com", name = "email",
                              bio = "demo data", button = "Submit")

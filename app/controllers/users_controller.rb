@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
     before_action :set_user, except: [:index, :new, :create]
     before_action :authenticate_user!
-  
-    def index
+    before_action :admin_user, except: [:show]
  
-    end
-  
     
   
     def show
@@ -13,7 +10,7 @@ class UsersController < ApplicationController
     end
   
     def new
-      admin_user
+
       
       @user = User.new
     end
@@ -33,11 +30,11 @@ class UsersController < ApplicationController
     end
   
     def edit
-      admin_user
+    
     end
   
     def update
-    
+      
       @user = User.find(params[:id])
       
       

@@ -79,9 +79,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'capybara-email'
+  gem 'so_many_devices'
+
   gem "factory_bot_rails"
   gem "faker"
-  gem 'capybara-email'
 end
 
 gem "tailwindcss-rails", "~> 2.0"
