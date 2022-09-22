@@ -39,9 +39,8 @@ class ActiveSupport::TestCase
     click_button button
 end
 
-def user_one
-    sign_in users(:one)
-end
+
+
 
 end
 

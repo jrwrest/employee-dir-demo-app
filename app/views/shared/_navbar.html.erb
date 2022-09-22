@@ -1,6 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <nav class="bg-white shadow" data-controller="navigation">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-red-300">
     <div class="flex h-16 justify-between">
       <div class="flex">
         <div class="-ml-2 mr-2 flex items-center md:hidden">
@@ -134,7 +134,7 @@
     </div>
   </div>
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="hidden w-52" id="mobile-menu" data-navigation-target ="item">
+  <div class="hidden w-22 flex items-center ml50" id="mobile-menu" data-navigation-target ="item">
     <%# <div class="space-y-1 pt-2 pb-3">
       <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
       <a href="#" class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700 sm:pl-5 sm:pr-6">Dashboard</a>
@@ -143,8 +143,8 @@
       <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6">Calendar</a>
     </div> %>
     <% if user_signed_in? %>
-      <div class="border-t border-gray-200 pt-4 pb-3">
-        <div class="flex items-center px-4 sm:px-6">
+      <div class="border-t border-gray-200 pt-4 pb-3 max-w-8">
+        <div class="flex flex-row w-8 justify-between items-center px-8 sm:px-6">
           <div class="flex-shrink-0">
             <%= link_to user_path(current_user), class: "" do %>
               <% if current_user.avatar.attached? %>
@@ -168,17 +168,16 @@
             </svg>
           </button>
         </div>
-      <% end %>
-      <div class="mt-3 space-y-1">
-        <% if user_signed_in? %>
+        <div class="mt-3 space-y-1">
           <li class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6" >
             <%= link_to "Edit Profile", edit_user_registration_path, class: "" %>
           </li>
           <li class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6" >
             <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "" %>
           </li>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
+</div>
 </nav>
