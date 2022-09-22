@@ -4,14 +4,14 @@ class UsersTest < ApplicationSystemTestCase
     include Capybara::Email::DSL
     include ActiveJob::TestHelper
   
-    def setup 
-        clear_emails
-        @user = users(:one)
-    end
+   
 
 
 
 test "user can reset their password" do
+    sign_out users(:two)
+    sign_out users(:one)
+    @user = users(:one)
     perform_enqueued_jobs do
         visit root_path
         assert page.current_path == new_user_session_path

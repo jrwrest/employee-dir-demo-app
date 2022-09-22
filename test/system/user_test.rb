@@ -91,4 +91,13 @@ test "user can use pagination" do
     assert_current_path "/?page=2"
   end
 
+  test "user should got to profile nav dropdown" do
+    visit root_path
+    find("#profile_dropdown").click
+    magic_test
+    assert page.has_content? 'two@gmail.com' 
+    click_on 'Edit Profile'
+    assert page.has_content? 'Edit Profile' 
+  end
+
 end
