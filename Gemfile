@@ -84,6 +84,7 @@ group :test do
 
   gem "factory_bot_rails"
   gem "faker"
+  gem "cuprite"
 end
 
 gem "tailwindcss-rails", "~> 2.0"

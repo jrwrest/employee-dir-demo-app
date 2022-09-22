@@ -2,7 +2,10 @@ class UsersController < ApplicationController
     before_action :set_user, except: [:index, :new, :create]
     before_action :authenticate_user!
     before_action :admin_user, except: [:show]
- 
+
+    def index
+      
+    end
     
   
     def show

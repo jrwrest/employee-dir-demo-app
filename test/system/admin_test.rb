@@ -6,22 +6,11 @@ class UsersTest < ApplicationSystemTestCase
      
     end
 
-test "should be able to search for employees and view show" do
-    visit root_path
 
-    assert_text "Employees Found:"
-    fill_in "search", with: "one"
-    find('#search').native.send_keys(:return)
-
-    within find "tbody" do 
-        click_on "one"
-    end
-    assert_selector "h2", text: "A"
-end
 
 test "admin should add a new user" do
     visit root_path
-    click_button "Add New"
+    click_button "New"
     create_update_user("Add Employee","new1@example.com", "new1", "Im new here", "Submit")
     assert_text "Saved..."
 

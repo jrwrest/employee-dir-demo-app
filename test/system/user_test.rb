@@ -6,7 +6,7 @@ class UsersTest < ApplicationSystemTestCase
         @other_user = users(:three)
     end
 
-test "should be able to search for employees and view show" do
+test "should be able to search for employees, view and show" do
     visit root_path
 
     assert_text "Employees Found:"
@@ -82,8 +82,8 @@ end
 test "user can use pagination" do
 
     visit root_path
-    assert_text "Employees Found:"
-    click_on "Next"
+    assert page.has_content? 'Employees Found:' 
+    click_on 'Next →'
     assert_current_path "/?page=2"
     click_on "3"
     assert_current_path "/?page=3"
