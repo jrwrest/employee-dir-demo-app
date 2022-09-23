@@ -8,23 +8,21 @@ class UsersTest < ApplicationSystemTestCase
  end
 
 class UserActions < UsersTest
-        test "should be able to search for employees, view and show" do
+    test "should be able to search for employees and #show" do
         visit root_path
 
         assert_text "Employees Found:"
-        fill_in "search", with: "one"
-        find('#search').native.send_keys(:return)
-
+        assert_difference @total do
+            fill_in "search", with: "one"
+            find('#search').native.send_keys(:return)
+        end 
         within find "tbody" do 
             click_on "one"
         end
         assert_selector "h2", text: "A"
     end
 
-    test "user should not go to new user page" do
-        visit new_user_path
-        assert_text "Employees Found:"
-    end
+   
 
     test "user should see admin buttons" do
         visit root_path
@@ -36,11 +34,7 @@ class UserActions < UsersTest
         assert_no_css "svg.bi-trash"
     end
 
-    test "user should no got to another user edit page" do
-        visit edit_user_path(@other_user)
-        assert_text "Employees Found:"
-    end
-
+   
 
     test "create a new user account" do
         sign_out users(:two)
@@ -97,7 +91,7 @@ class UserActions < UsersTest
     test "user should got to profile nav dropdown" do
         visit root_path
         find("#profile_dropdown").click
-        within find("#mobile-menu") do
+        within find("#avatar-menu") do
             click_on "Edit Profile"
         end
         assert page.has_content? 'Edit Profile' 
